@@ -84,16 +84,17 @@
 ~~~ javascript
      
     $('#b_1').jWait(1000)
-    
-             .addClass('active')
+             .addClass('active') //$('#b_1').addClass('active')
              .jWait(1000)
-             .fadeIn()
+             .fadeIn() //$('#b_1').fadeIn()
              
-             .jWait('#b_2').jWait(1000).css({color:red})
+             .jWait('#b_2')//修改代理的对象为 $('#b_2')
+             .jWait(1000)
+             .css({color:red})//$('#b_2').fadeIn()
              
-             .jWait(console)
-             .log('hello')
-             .error('error');
+             .jWait(console)//修改代理的对象为 console
+             .log('hello') //console.log('hello') 
+             .error('error');//console.error('error') 
 ~~~
 
 

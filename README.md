@@ -80,6 +80,21 @@
 
 ----
 
+## 简单图解
+~~~ javascript
+     
+    $('#b_1').jWait(1000)
+    
+             .addClass('active')
+             .jWait(1000)
+             .fadeIn()
+             
+             .jWait('#b_2').jWait(1000).css({color:red})
+             
+             .jWait(console)
+             .log('hello')
+             .error('error');
+~~~
 
 
 

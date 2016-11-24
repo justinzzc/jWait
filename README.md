@@ -1,7 +1,8 @@
 # jWait
 
 > a jquery plugin ,which provide a easy way to delay your work
-> 为了少写几个setTimeout,哈哈 
+
+> jquery(zepto)插件,管道式写法  ----为了少写几个setTimeout,哈哈 
 
 ## 示例代码
 

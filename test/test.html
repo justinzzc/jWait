@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jWait</title>
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+
+    <style>
+
+        html {
+            background: #e3e3e3;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            line-height: 3em;
+        }
+
+        .content {
+            position: relative;
+        }
+
+        .blocks {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .block {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background: red;
+            margin: 10px;
+            display: inline-block;
+            color: #ffffff;
+            transition: all ease 500ms;
+            text-shadow: 0 1px 1px #222 ;
+            box-shadow: 0 1px 2px #222 ;
+
+        }
+
+        .codes {
+
+        }
+
+        code{
+            box-shadow: 0 1px 2px #222 ;
+        }
+    </style>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../jWait.js"></script>
+</head>
+<body>
+<h1>jWait Demo</h1>
+
+<div class="content">
+    <div class="blocks">
+
+        <div id="b_1" class="block">
+            red
+        </div>
+
+        <div id="b_2" class="block">
+            red
+        </div>
+    </div>
+</div>
+<div class="codes">
+
+    <pre>
+    <code>
+
+        $('#b_1').jWait(500).css({background: color, color: color}).text(color)
+                .jWait(function () {
+                    //this is #b_2
+                    console.log('@==1==  ' + this.attr('id') + ':' + this.css('color'));
+                })
+                .jWait('#b_2').jWait(500).css({background: color, color: color}).text(color)
+                .jWait(function () {
+                        //this is #b_2
+                        console.log('@==2==  ' + this.attr('id') + ':' + this.css('color'));
+                })
+                .jWait(aniWork);
+
+    </code>
+    </pre>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad();
+
+    $(function () {
+
+        var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'], count = 0;
+
+        function aniWork() {
+            count++;
+            if (count >= colors.length) {
+                count = 0;
+            }
+            var color = colors[count];
+
+            $('#b_1').jWait(500).css({background: color}).text(color)
+                    .jWait(function () {
+                        //this is #b_2
+                        console.log('@==1==  ' + this.attr('id') );
+                    })
+                    .jWait('#b_2').jWait(500).css({background: color}).text(color)
+
+                    .jWait(function () {
+                        //this is #b_2
+                        console.log('@==2==  ' + this.attr('id'));
+                    }).jWait(aniWork);
+
+        }
+
+
+        aniWork();
+
+    });
+
+</script>
+</body>
+</html>

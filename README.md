@@ -19,7 +19,8 @@
 **现在**
 
 ~~~ javascript
-    $('#b_1').jWait(1000).addClass('active');
+    $('#b_1').jWait(1000)
+             .addClass('active');
 ~~~
 
 ----
@@ -38,7 +39,8 @@
 **==> 现在 now**
 
 ~~~ javascript
-    $('#b_1').jWait(1000).addClass('active')
+    $('#b_1').jWait(1000)
+             .addClass('active')
              .jWait(1000)
              .jWait('#b_2').css({color:red});
 ~~~
@@ -68,8 +70,11 @@
         //...
     }   
     
-    $('#b_1').jWait(1000).addClass('active').jWait(doSth)
-             .jWait(1000).jWait(doSth)
+    $('#b_1').jWait(1000)
+             .addClass('active')
+             .jWait(doSth)
+             .jWait(1000)
+             .jWait(doSth)
              .jWait('#b_2').css({color:red});
 ~~~
 

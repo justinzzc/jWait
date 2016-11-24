@@ -90,11 +90,16 @@
              
              .jWait('#b_2')//修改代理的对象为 $('#b_2')
              .jWait(1000)
-             .css({color:red})//$('#b_2').css({color:red})
+             .css({color:'red'})//$('#b_2').css({color:'red'})
+             .jWait(function (){
+                //这里获取当前代理对象 this ==> $('#b_2')
+                console.log(this.css('color'));
+             })
              
              .jWait(console)//修改代理的对象为 console
              .log('hello') //console.log('hello') 
-             .error('error');//console.error('error') 
+             .error('error');//console.error('error');
+              
 ~~~
 
 

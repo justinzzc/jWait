@@ -8,7 +8,7 @@
 
 
 
-**原来**
+**原来 yet**
 
 ~~~ javascript
     setTimeout(function (){
@@ -16,7 +16,7 @@
     },1000);
 ~~~
 
-**现在**
+**==> 现在 now**
 
 ~~~ javascript
     $('#b_1').jWait(1000)

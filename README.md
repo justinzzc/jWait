@@ -7,9 +7,13 @@
  
 ## 安装
  
-> npm install jwait  
+~~~
+ npm install jwait
+~~~
 或
-> bower install jWait
+~~~
+ bower install jWait
+~~~
 
 ## 示例代码
 

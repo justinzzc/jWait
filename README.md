@@ -2,11 +2,16 @@
 
 > a jquery plugin ,which provide a easy way to delay your work
 
-> jquery(zepto)插件,把各种延迟串联起来,采用管道式写法  ----为了少写几个setTimeout,哈哈 
+> jquery(zepto)插件,把各种延迟串联起来,采用管道式写法  ----为了少写几个setTimeout,哈哈
+ 
+ 
+## 安装
+ 
+> npm install jwait  
+或
+> bower install jWait
 
 ## 示例代码
-
-
 
 **原来 yet**
 

@@ -17,7 +17,7 @@
 
 ## 示例代码
 
-**原来 yet**
+**原来 o(╯□╰)o**
 
 ~~~ javascript
     setTimeout(function (){
@@ -25,7 +25,7 @@
     },1000);
 ~~~
 
-**==> 现在 now**
+**==> 现在 O(∩_∩)O **
 
 ~~~ javascript
     $('#b_1').jWait(1000)
@@ -33,7 +33,7 @@
 ~~~
 
 ----
-**原来 yet**
+**原来 o(╯□╰)o**
 
 ~~~ javascript
     setTimeout(function (){
@@ -45,7 +45,7 @@
     },1000);
 ~~~
 
-**==> 现在 now**
+**==> 现在 O(∩_∩)O **
 
 ~~~ javascript
     $('#b_1').jWait(1000)
@@ -55,7 +55,7 @@
 ~~~
 
 ----
-**原来 yet**
+**原来 o(╯□╰)o**
 
 ~~~ javascript
     function doSth(){
@@ -72,7 +72,7 @@
     },1000);
 ~~~
 
-**==> 现在 now**
+**==> 现在 O(∩_∩)O **
 
 ~~~ javascript
     function doSth(){

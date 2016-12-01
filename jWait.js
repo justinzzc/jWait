@@ -10,9 +10,14 @@
      */
     function jWaitProxy(targetObj, preActions) {
         var mProxy = this;
-        this.__original = targetObj;
+        var __original = targetObj;
 
         this.__id = Math.floor(Math.random() * 20000) + '_' + new Date().getTime();
+        this.getOriginal=function(){
+            return __original;
+        };
+
+
 
         var actionDoing = false;
         var aniQueue = preActions || [];
@@ -22,6 +27,10 @@
             aniQueue.push([methodName, args]);
             return doNext();
         }
+
+        var lastResult;
+
+
 
         function getAction(ops, cb) {
             var tp = (typeof ops);
@@ -37,20 +46,13 @@
                     break;
                 case 'function':
                     return function () {
-                        //console.log('do function');
-                        var s = ops.bind(mProxy.__original)();
-                        //for promise
-                        if (s && typeof s.then === 'function') {
-                            function toDoNext() {
-                                actionDoing = false;
-                                doNext();
-                            }
+                        lastResult = ops.bind(mProxy.getOriginal())({
+                            lastResult:lastResult,
+                            currentProxy:mProxy
+                        },stopRun);
 
-                            s.then(toDoNext, toDoNext);
-                        } else {
-                            actionDoing = false;
-                            doNext();
-                        }
+                        actionDoing = false;
+                        doNext();
                     };
                     break;
                 case 'string':
@@ -75,6 +77,12 @@
 
         }
 
+
+        function stopRun() {
+            //clear queue
+            aniQueue = [];
+        }
+
         function doNext() {
             if (!actionDoing && aniQueue.length) {
                 actionDoing = true;
@@ -86,9 +94,8 @@
                             var methodName = act[0], args = act[1];
                             //console.log('do method['+methodName+'] start');
                             //console.log('[' + mProxy.__id + ']@ing== action: methodName:[' + methodName + '] args:' + args);
-                            mProxy.__original[methodName].apply(mProxy.__original, Array.prototype.slice.call(args));
+                            return mProxy.getOriginal()[methodName].apply(mProxy.getOriginal(), Array.prototype.slice.call(args));
                             //console.log('do method['+methodName+'] end');
-                            return mProxy;
                         })();
                         break;
                     case '[object Function]'://default function

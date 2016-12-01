@@ -36,8 +36,8 @@
             display: inline-block;
             color: #ffffff;
             transition: all ease 500ms;
-            text-shadow: 0 1px 1px #222 ;
-            box-shadow: 0 1px 2px #222 ;
+            text-shadow: 0 1px 1px #222;
+            box-shadow: 0 1px 2px #222;
 
         }
 
@@ -45,8 +45,8 @@
 
         }
 
-        code{
-            box-shadow: 0 1px 2px #222 ;
+        code {
+            box-shadow: 0 1px 2px #222;
         }
     </style>
     <script src="./jquery.min.js"></script>
@@ -72,17 +72,22 @@
     <pre>
     <code>
 
-        $('#b_1').jWait(500).css({background: color, color: color}).text(color)
-                .jWait(function () {
-                    //this is #b_2
-                    console.log('@==1==  ' + this.attr('id') + ':' + this.css('color'));
-                })
-                .jWait('#b_2').jWait(500).css({background: color, color: color}).text(color)
-                .jWait(function () {
-                        //this is #b_2
-                        console.log('@==2==  ' + this.attr('id') + ':' + this.css('color'));
-                })
-                .jWait(aniWork);
+        $('#b_1').jWait(500).css({background: color}).text(color)
+            .css('background')
+            .jWait(function (data, stopRun) {
+                //this is #b_1
+                console.log('@==1==  ' + this.attr('id') + ',Result:' + data.lastResult);
+
+                if (count > 4) {
+                    stopRun();
+                }
+            })
+            .jWait('#b_2').jWait(500).css({background: color}).text(color)
+
+            .jWait(function () {
+                //this is #b_2
+                console.log('@==2==  ' + this.attr('id'));
+            }).jWait(aniWork);
 
     </code>
     </pre>
@@ -103,9 +108,14 @@
             var color = colors[count];
 
             $('#b_1').jWait(500).css({background: color}).text(color)
-                    .jWait(function () {
+                    .css('background')
+                    .jWait(function (data, stopRun) {
                         //this is #b_1
-                        console.log('@==1==  ' + this.attr('id') );
+                        console.log('@==1==  ' + this.attr('id') + ',Result:' + data.lastResult);
+
+                        if (count > 4) {
+                            stopRun();
+                        }
                     })
                     .jWait('#b_2').jWait(500).css({background: color}).text(color)
 
